@@ -12,6 +12,7 @@
 		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Volumes/Kevin/百度网盘下载/04 传智168期JAVA（就业班）/2015年传智播客JavaEE就业班视频教程/day74-mybatis/0319/逆向工程/generatorSqlmapCustom"/>
 			<item value="/Volumes/Kevin/百度网盘下载/04 传智168期JAVA（就业班）/2015年传智播客JavaEE就业班视频教程/day74-mybatis/0319/源代码/springmybatis1110"/>
 			<item value="/Users/kevin/Project/Java/hdsc"/>
 		</list>
