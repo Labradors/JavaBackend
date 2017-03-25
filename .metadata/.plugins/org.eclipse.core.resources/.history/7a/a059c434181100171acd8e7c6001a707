@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间，方便管理，但是在开发dao时有特殊的作用 -->
+<mapper namespace="tech.jiangtao.mybatis.mapper.UserMapper">
+
+	
+</mapper>

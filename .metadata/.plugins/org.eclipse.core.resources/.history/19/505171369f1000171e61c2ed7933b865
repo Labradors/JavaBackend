@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间，方便管理，但是在开发dao时有特殊的作用 -->
+<mapper namespace="tech.jiangtao.mybatis.mapper.UserMapper">
+
+	<!-- 根据用户id，查询用户信息，只能是单条数据 -->
+	<select id="findUserById" parameterType="int" resultType="tech.jiangtao.mybatis.pojo.User">
+		select * from user where id= #{id}
+	</select>
+	<!-- 根据用户名称模糊查询用户信息，可能返回多条 -->
+	<select id="findUserByName" parameterType="java.lang.String" resultType="tech.jiangtao.mybatis.pojo.User">
+		select * from user where username like '%${value}%'
+	</select>
+	
+	<!-- 自定义包装类型进行查询 -->
+    <select id="findUserByCustom" parameterType="tech.jiangtao.mybatis.pojo.UserQuery" resultType="tech.jiangtao.mybatis.pojo.User">
+		select * from user where username like '%${userCustom.username}%'
+	</select>
+	
+	<!--  自定义查询条件，返回查询的个数,通常用于分页 -->
+	<!--  获得查询到的用户名跟username相似的个数-->
+	<select id="findUserCount" parameterType="userQuery" resultType="int">
+		select count(*) from user where username like '%${userCustom.username}%'
+	</select>
+	
+	<!-- 使用resultMap做一个结果映射 -->
+	<select id="findUserListByResultMap" parameterType="java.lang.String" resultMap="tech.jiangtao.mybatis.pojo.User">
+		select * from user where username like '%${value}%'
+	</select>
+	
+	<!-- 向用户表插入一条记录 -->
+	<insert id="insertUser" parameterType="tech.jiangtao.mybatis.pojo.User">
+		<selectKey keyProperty="id" order="AFTER" resultType="int">
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into user(username,sex,birthday,address) values(#{username},#{sex},#{birthday},#{address});
+	</insert>
+	
+	<!-- oracle的写法 -->
+	<!-- <insert id="insertUser" parameterType="tech.jiangtao.mybatis.pojo.User">
+		<selectKey keyProperty="id" order="BEFORE" resultType="int">
+			select 序列.nextval() from dual
+		</selectKey>
+		insert into user(id,username,sex,birthday,address) values(#{id},#{username},#{sex},#{birthday},#{address});
+	</insert> -->
+	
+	<!-- deleteUserById -->
+	<delete id="deleteUserById" parameterType="int">
+		delete from user where id=#{id}
+	</delete>
+	
+	<!-- updateUser -->
+	<update id="updateUser" parameterType="tech.jiangtao.mybatis.pojo.User">
+		update user set username=#{username},sex=#{sex},birthday=#{birthday},address=#{address} where id=#{id}
+	</update>
+</mapper>

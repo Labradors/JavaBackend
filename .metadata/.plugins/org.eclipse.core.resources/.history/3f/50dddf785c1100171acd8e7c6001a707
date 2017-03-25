@@ -1,0 +1,12 @@
+package tech.jiangtao.mybatis.dao;
+
+import org.junit.Test;
+
+public class UserDaoImplTest {
+
+	@Test
+	public void testFindUserById() {
+		
+	}
+
+}

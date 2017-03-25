@@ -1,0 +1,13 @@
+package tech.jiangtao.mybatis.mapper;
+
+import java.util.List;
+
+import tech.jiangtao.mybatis.pojo.Orders;
+import tech.jiangtao.mybatis.pojo.OrdersCustom;
+
+public interface OrderMapperCustom {
+
+	public List<OrdersCustom> findOrdersUserList() throws Exception;
+	
+	public List<OrdersCustom> findOrdersUserListResultMap() throws Exception;
+}

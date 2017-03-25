@@ -1,0 +1,9 @@
+package tech.jiangtao.mybatis.pojo;
+
+public class Orderdetail {
+
+	private int id;
+	private int orders_id;
+	private int items_id;
+	private int items_num;
+}

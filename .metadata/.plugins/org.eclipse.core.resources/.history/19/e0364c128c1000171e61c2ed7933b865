@@ -1,0 +1,8 @@
+package tech.jiangtao.mybatis.mapper;
+
+import tech.jiangtao.mybatis.pojo.User;
+
+public interface UserMapper {
+
+	public User findUserById(int id) throws Exception;
+}

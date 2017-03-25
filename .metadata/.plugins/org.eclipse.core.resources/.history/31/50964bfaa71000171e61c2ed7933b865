@@ -1,0 +1,6 @@
+package tech.jiangtao.mybatis.pojo;
+
+public class UserCustom extends User {
+
+	public int age;
+}

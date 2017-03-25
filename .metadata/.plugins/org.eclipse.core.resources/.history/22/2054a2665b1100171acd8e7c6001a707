@@ -1,0 +1,19 @@
+package tech.jiangtao.mybatis.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import tech.jiangtao.mybatis.pojo.User;
+
+public class UserDaoImpl implements UserDao {
+	
+	private SqlSessionFactory sqlSessionFactory;
+
+	@Override
+	public User findUserById(int id) throws Exception {
+		SqlSession session = mSqlSessionFactory.openSession();
+		User user = session.selectOne("test.findUserById",User.class);
+		return user;
+	}
+
+}

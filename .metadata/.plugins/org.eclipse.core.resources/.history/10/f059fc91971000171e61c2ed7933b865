@@ -1,0 +1,8 @@
+package tech.jiangtao.mybatis.pojo;
+
+public class UserQuery {
+
+	private User user;
+	
+	private UserCustom userCustom;
+}

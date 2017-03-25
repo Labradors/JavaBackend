@@ -1,0 +1,61 @@
+package tech.jiangtao.mybatis.test;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
+
+import tech.jiangtao.mybatis.mapper.UserMapper;
+import tech.jiangtao.mybatis.pojo.User;
+
+public class UserMapperTest {
+	
+	private SqlSessionFactory sessionFactory;
+
+	@Before
+	public void init(){
+		String resource = "SqlMapConfig.xml";
+		InputStream inputStream = null;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+	}
+
+	@Test
+	public void testFindUserById() {
+		SqlSession session = sessionFactory.openSession();
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		try {
+			System.out.println(mapper.findUserById(1).toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testFindUserByName() {
+		SqlSession session = sessionFactory.openSession();
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		try {
+			List<User> list = mapper.findUserByName("张三");
+			for(int i = 0;i<list.size();i++){
+				System.out.println(list.get(i).toString());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

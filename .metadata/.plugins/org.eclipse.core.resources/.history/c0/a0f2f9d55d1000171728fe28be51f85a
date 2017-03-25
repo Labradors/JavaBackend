@@ -1,0 +1,33 @@
+package tech.jiangtao.mybatis.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
+
+public class MybatisUserTest {
+	
+	private SqlSessionFactory sessionFactory;
+
+	@Before
+	public void init(){
+		String resource = "SqlMapConfig.xml";
+		InputStream inputStream = null;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+	}
+	
+	@Test
+	public void test(){
+		
+	}
+}

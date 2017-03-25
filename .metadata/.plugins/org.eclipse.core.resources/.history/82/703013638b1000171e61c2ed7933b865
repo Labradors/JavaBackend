@@ -1,0 +1,5 @@
+package tech.jiangtao.mybatis.mapper;
+
+public interface UserMapper {
+
+}

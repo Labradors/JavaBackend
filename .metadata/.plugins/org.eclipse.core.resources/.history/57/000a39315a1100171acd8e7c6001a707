@@ -1,0 +1,17 @@
+package tech.jiangtao.mybatis.dao;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import tech.jiangtao.mybatis.pojo.User;
+
+public class UserDaoImpl implements UserDao {
+	
+	private SqlSessionFactory mSqlSessionFactory;
+
+	@Override
+	public User findUserById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
