@@ -1,6 +1,0 @@
-package tech.jiangtao.mybatis.mapper;
-
-public interface UserMapper {
-
-	public void findUserById(int id);
-}

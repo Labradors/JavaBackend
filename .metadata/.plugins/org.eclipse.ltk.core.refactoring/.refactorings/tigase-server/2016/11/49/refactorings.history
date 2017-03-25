@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete 4 elements from project &apos;tigase-server&apos;&#x0A;- Original project: &apos;tigase-server&apos;&#x0A;- Original elements:&#x0A;     thread-dump.log.0&#x0A;     thread-dump.log.0.lck&#x0A;     tigase.log.0&#x0A;     tigase.log.0.1" description="Delete elements" element1="logs/tigase.log.0.1" element2="logs/thread-dump.log.0.lck" element3="logs/tigase.log.0" element4="logs/thread-dump.log.0" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1480320729496" subPackages="false" version="1.0"/>
-</session>

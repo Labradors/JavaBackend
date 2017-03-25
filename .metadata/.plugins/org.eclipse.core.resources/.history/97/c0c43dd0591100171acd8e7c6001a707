@@ -1,5 +1,0 @@
-package tech.jiangtao.mybatis.dao;
-
-public interface UserDao {
-
-}
