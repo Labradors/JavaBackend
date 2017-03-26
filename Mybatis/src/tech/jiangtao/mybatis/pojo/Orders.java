@@ -4,9 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 订单
- * @author kevin
- *
+  *  @moduleName： Mybatis   
+  *  @className： Orders   
+  *  @description：    
+  *  @author： kevin   
+  *  @createTime： 2017年3月26日 上午4:05:33   
+  *  @version:  
+  *
  */
 public class Orders {
 	private int id;

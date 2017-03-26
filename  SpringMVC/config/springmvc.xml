@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+		
+		<!-- 配置Handler -->
+ 		<bean id = "itemsQuery" name="/itemsList.action" class="tech.jiangtao.springmvc.unused.ItemsController"></bean>
+		
+		<!-- 基于注解的Handler 实际开发中不推荐 -->
+		<bean class="tech.jiangtao.springmvc.controller.QueryItemsController"></bean>
+		
+		<!-- 使用组件扫描 -->
+ 		<context:component-scan base-package="tech.jiangtao.springmvc.controller.*"></context:component-scan>
+		
+		
+		
+		
+		
+		
+		<!-- 配置处理器映射器 通过HandlerMapping接口判断是否是映射器-->
+ 		<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean> 
+		
+		<!-- 第二个处理器映射，二选一 -->
+		 <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+			<property name="mappings">
+				<props>
+					<prop key="/queryItem.action">itemsQuery</prop>
+				</props>
+			</property>
+		</bean>
+		
+		<!-- 第三个 基于注解的处理器映射器 即支持@controller @requestMapping -->
+		<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+		
+		
+		
+		
+		
+		<!-- 配置处理器适配器 通过HandlerAdapter接口判断是否是适配器-->
+		<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+		
+		<!-- 第二个处理器适配器 二选一-->
+		<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
+		
+		<!-- 第三个 基于注解的处理器适配器  不要求实现接口，必须与上面的第三个映射器一期使用-->
+		<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+		
+		
+		
+		<!-- 配置视图解析器 要求将jstl的包加入classpath-->
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<!-- 配置视图的前缀和后缀 -->
+			<property name="prefix" value="/WEB-INF/jsp/"></property>
+			<property name="suffix" value=".jsp"></property>
+		</bean>
+</beans>
