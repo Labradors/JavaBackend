@@ -1,5 +1,7 @@
 package tech.jiangtao.springmvc.model;
 
+import java.util.List;
+
 /**
  * @class: ItemsQuery </br>
  * @description: 自定义商品输出拓展的{@link items} </br>
@@ -12,11 +14,21 @@ public class ItemsQuery {
 
     private ItemsCustom itemsCustom;
 
+    private List<ItemsCustom> itemsCustoms;
+
     public ItemsCustom getItemsCustom() {
         return itemsCustom;
     }
 
     public void setItemsCustom(ItemsCustom itemsCustom) {
         this.itemsCustom = itemsCustom;
+    }
+
+    public List<ItemsCustom> getItemsCustoms() {
+        return itemsCustoms;
+    }
+
+    public void setItemsCustoms(List<ItemsCustom> itemsCustoms) {
+        this.itemsCustoms = itemsCustoms;
     }
 }

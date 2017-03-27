@@ -1,5 +1,6 @@
 package tech.jiangtao.springmvc.service;
 
+import tech.jiangtao.springmvc.model.Items;
 import tech.jiangtao.springmvc.model.ItemsCustom;
 import tech.jiangtao.springmvc.model.ItemsQuery;
 
@@ -16,4 +17,8 @@ import java.util.List;
 public interface ItemsService {
 
     public List<ItemsCustom> findItemsList(ItemsQuery query) throws Exception;
+
+    public ItemsCustom findItemsById(Integer id) throws Exception;
+
+    public ItemsCustom updateItems(Integer items_id,ItemsCustom items) throws Exception;
 }

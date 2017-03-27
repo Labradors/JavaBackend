@@ -24,8 +24,9 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!--这是解决post乱码的情况-->
     <filter>
-        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
@@ -33,7 +34,7 @@
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
