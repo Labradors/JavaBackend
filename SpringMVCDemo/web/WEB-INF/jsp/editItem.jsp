@@ -48,8 +48,12 @@
             </td>
         </tr>
     </table>
-
 </form>
+<c:forEach items="${errors}" var="error">
+    <p>
+       ${error.defaultMessage}
+    </p>
+</c:forEach>
 </body>
 
 </html>

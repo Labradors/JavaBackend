@@ -1,6 +1,8 @@
 package tech.jiangtao.springmvc.model;
 
+import com.sun.istack.internal.NotNull;
 import java.util.Date;
+import javax.validation.constraints.Size;
 
 public class Items {
     /**
@@ -17,6 +19,7 @@ public class Items {
      *
      * @mbggenerated Sun Mar 26 02:27:42 CST 2017
      */
+    @Size(min = 1,max = 30,message = "{items.name.length.error}")
     private String name;
 
     /**
@@ -41,6 +44,7 @@ public class Items {
      *
      * @mbggenerated Sun Mar 26 02:27:42 CST 2017
      */
+    @javax.validation.constraints.NotNull(message = "{items.createtime.is.notnull}")
     private Date createtime;
 
     /**

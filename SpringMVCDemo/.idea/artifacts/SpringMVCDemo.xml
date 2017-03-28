@@ -17,6 +17,11 @@
           <element id="library" level="project" name="aspectjweaver-1.8.9" />
           <element id="library" level="project" name="commons-pool-1.3" />
           <element id="library" level="project" name="commons-fileupload-1.3.2" />
+          <element id="library" level="project" name="jackson" />
+          <element id="library" level="project" name="jackson-core-asl" />
+          <element id="library" level="project" name="jackson-core-2.8.6" />
+          <element id="library" level="project" name="jackson-annotations-2.8.5" />
+          <element id="library" level="project" name="hibernate-validator-4.3.0.Final" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="SpringMVCDemo/web/Web" />

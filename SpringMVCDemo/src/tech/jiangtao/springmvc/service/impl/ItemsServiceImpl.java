@@ -4,6 +4,7 @@ import com.sun.istack.internal.NotNull;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tech.jiangtao.springmvc.exception.CustomException;
 import tech.jiangtao.springmvc.mapper.ItemsCustomMapper;
 import tech.jiangtao.springmvc.mapper.ItemsMapper;
 import tech.jiangtao.springmvc.model.Items;
@@ -44,6 +45,9 @@ public class ItemsServiceImpl implements ItemsService {
 
     @Override
     public ItemsCustom findItemsById(Integer id) throws Exception {
+        if (id==null){
+            throw new CustomException("没有查询到任何商品");
+        }
         Items items = itemsMapper.selectByPrimaryKey(id);
         ItemsCustom custom = new ItemsCustom();
         BeanUtils.copyProperties(items,custom);
