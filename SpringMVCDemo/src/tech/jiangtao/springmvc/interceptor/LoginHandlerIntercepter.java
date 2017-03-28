@@ -17,11 +17,12 @@ public class LoginHandlerIntercepter implements HandlerInterceptor {
 
   @Override public boolean preHandle(HttpServletRequest request,
       HttpServletResponse response, Object o) throws Exception {
-      if (request.getParameter("username")!=null){
-        return true;
-      }
-      response.setCharacterEncoding("UTF-8");
-      response.getOutputStream().print("{'error':'请前往登录页面'}");
+    if (request.getParameter("username") != null) {
+      return true;
+    }
+    response.setContentType("text/html:charset=UTF-8");
+    response.setCharacterEncoding("UTF-8");
+    response.getOutputStream().print("妈卖批");
     return false;
   }
 
