@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">
+
+  <!-- 加载配置文件 -->
+  <context:property-placeholder location="classpath*:jdbc.properties" />
+  <!-- 数据库连接池 -->
+  <!-- mysql数据源-->
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+      destroy-method="close">
+    <property name="driverClassName" value="${jdbc.mysql.driver}"/>
+    <property name="url" value="${jdbc.mysql.url1}"/>
+    <property name="username" value="${jdbc.mysql.username}"/>
+    <property name="password" value="${jdbc.mysql.password1}"/>
+    <property name="initialSize" value="${jdbc.initialSize}"/>
+    <property name="minIdle" value="${jdbc.minIdle}"/>
+    <property name="maxIdle" value="${jdbc.maxIdle}"/>
+    <property name="maxActive" value="${jdbc.maxActive}"/>
+    <property name="maxWait" value="${jdbc.maxWait}"/>
+    <property name="defaultAutoCommit" value="${jdbc.defaultAutoCommit}"/>
+    <property name="removeAbandoned" value="${jdbc.removeAbandoned}"/>
+    <property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}"/>
+    <property name="testWhileIdle" value="${jdbc.testWhileIdle}"/>
+    <property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}"/>
+    <property name="numTestsPerEvictionRun" value="${jdbc.numTestsPerEvictionRun}"/>
+    <property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}"/>
+  </bean>
+  <!-- SqlsessionFactory -->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!-- 数据源 -->
+    <property name="dataSource" ref="dataSource"/>
+    <!-- mybatis配置文件 -->
+    <property name="configLocation" value="classpath:mybatis-config.xml"/>
+  </bean>
+
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="tech.jiangtao.springredis.mapper"/>
+    <!-- 使用sqlSessionFactoryBeanName -->
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+  </bean>
+
+</beans>
