@@ -2,8 +2,6 @@ package tech.jiangtao.springredis.controller;
 
 import java.util.Date;
 import java.util.Random;
-import java.util.UUID;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import tech.jiangtao.springredis.dao.TokenManager;
-import tech.jiangtao.springredis.dao.UserDao;
 import tech.jiangtao.springredis.model.TokenModel;
 import tech.jiangtao.springredis.model.User;
 import tech.jiangtao.springredis.service.UserService;
