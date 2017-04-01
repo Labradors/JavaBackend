@@ -9,4 +9,5 @@ public interface UserService {
   public User findUser(Integer id) throws Exception;
 
   public void deleteUser(Integer id) throws Exception;
+
 }

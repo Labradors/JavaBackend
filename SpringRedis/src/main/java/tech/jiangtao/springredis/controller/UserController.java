@@ -3,14 +3,20 @@ package tech.jiangtao.springredis.controller;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import tech.jiangtao.springredis.dao.TokenManager;
 import tech.jiangtao.springredis.dao.UserDao;
+import tech.jiangtao.springredis.model.TokenModel;
 import tech.jiangtao.springredis.model.User;
 import tech.jiangtao.springredis.service.UserService;
+import tech.jiangtao.springredis.utils.Authorization;
 
 /**
  * @class: UserController </br>
@@ -27,9 +33,12 @@ public class UserController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private TokenManager tokenManager;
+
   @RequestMapping("/add")
   public @ResponseBody User addUser(String username, Date birthday, String sex,
-      String address) {
+      String address,HttpServletResponse response) {
     User user = new User();
     user.setId((new Random().nextInt(1000000)));
     user.setUsername(username);
@@ -38,6 +47,8 @@ public class UserController {
     user.setSex(sex);
     try {
       userService.saveUser(user);
+      TokenModel model = tokenManager.createToken(user.getId());
+      response.setHeader(Authorization.AUTHORIZATION,user.getId()+"-"+model.getToken());
       return user;
     } catch (Exception e) {
       e.printStackTrace();
@@ -55,7 +66,7 @@ public class UserController {
   }
 
   @RequestMapping("/query/{id}")
-  public @ResponseBody User queryUser(@PathVariable("id") Integer id){
+  public @ResponseBody User queryUser(@RequestParam("id") Integer id){
     try {
       return userService.findUser(id);
     } catch (Exception e) {
