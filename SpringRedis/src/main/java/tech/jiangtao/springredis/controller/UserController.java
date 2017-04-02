@@ -62,7 +62,7 @@ public class UserController {
     }
   }
 
-  @RequestMapping("/query/{id}")
+  @RequestMapping("/query")
   public @ResponseBody User queryUser(@RequestParam("id") Integer id){
     try {
       return userService.findUser(id);
