@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    div * {
+      width: 400px;
+      height: 400px;
+      float: left;
+      border: 1px salmon solid;
+    }
+  </style>
+  <script type="text/javascript" src="../../Jquery/js/jquery-1.4.2.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#button1").click(function () {
+        $("div:first").fadeOut(3000).fadeIn(3000);
+      });
+      $("#button2").click(function () {
+        $("div:last").slideUp(3000).slideDown(3000);
+      });
+      $("#button3").click(function () {
+        $("div:not('.bom')").css("height",800).css("background","red");
+      });
+      $("#button4").click(function () {
+        $("div:even").css("background","blue");
+      });
+      $("#button5").click(function () {
+        $("div:odd").css("background","yellow");
+      });
+      $("#button6").click(function () {
+        $("div:eq(3)").css("background","black");
+      });
+      $("#button7").click(function () {
+        $("div:gt(3)").css("background","white");
+      });
+      $("#button8").click(function () {
+        $("div:lt(3)").animate({"margin-left":200},1000);
+      });
+      $("#button9").click(function () {
+        $(":header").animate({"margin-left":200},1000);
+      });
+      $("#button10").click(function () {
+        $(":animated").animate({"margin-left":200},1000);
+      });
+    })
+  </script>
+</head>
+<body>
+<h1>妈的智障</h1>
+<div>
+  <div id="bom1" class="bom"></div>
+  <div id="bom2" class="bom"></div>
+  <div id="bom3" class="bom"></div>
+  <div id="bom4" class="bom"></div>
+  <span id="span" class="bom"></span>
+</div>
+<input type="button" value="获取第一个div" id="button1">
+<input type="button" value="获取最后一个div" id="button2">
+<input type="button" value="class不为bom" id="button3">
+<input type="button" value="偶数" id="button4">
+<input type="button" value="基数" id="button5">
+<input type="button" value="索引值为3" id="button6">
+<input type="button" value="索引值为>3" id="button7">
+<input type="button" value="索引值为<3" id="button8">
+<input type="button" value="拿到所有的标题元素" id="button9">
+<input type="button" value="正在执行动画的元素" id="button10">
+</body>
+</html>

@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <style type="text/css">
+    .bom {
+      width: 200px;
+      height: 200px;
+      border: 1px solid;
+      float: left;
+    }
+  </style>
   <script type="text/javascript" src="../../Jquery/js/jquery-1.4.2.js"></script>
   <script>
     $(function () {
@@ -10,11 +18,41 @@
         var value = $("#username").val();
         alert(value);
       });
+      $("#button1").click(function () {
+        $(".bom").css("background", "red");
+        $("#container").fadeIn(3000);
+        $("#container").fadeOut(3000);
+      });
+      $("#button2").click(function () {
+        $("#container").slideDown(3000);
+        $("#container").slideUp(3000);
+      });
+      $("#button3").click(function () {
+        $("#container").show(3000);
+        $("#container").hide(3000);
+      });
+      $("#button4").click(function () {
+        $("#container").animate({"margin-left":300},3000);
+        $("#container").animate({"padding":100},3000);
+      })
     })
   </script>
 </head>
 <body>
 <input type="text" id="username"/>
 <input type="button" id="button" value="jquery vs dom"/>
+<div id="container">
+  <div class="bom"></div>
+  <div class="bom"></div>
+  <div class="bom"></div>
+  <div class="bom"></div>
+  <span></span>
+</div>
+<div>
+  <input type="button" id="button1" value="button1"/>
+  <input type="button" id="button2" value="button1"/>
+  <input type="button" id="button3" value="button1"/>
+  <input type="button" id="button4" value="button1"/>
+</div>
 </body>
 </html>
