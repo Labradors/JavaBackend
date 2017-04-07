@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="XMPPWeb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="XMPPWeb.war">
+      <element id="artifact" artifact-name="XMPPWeb:war exploded" />
+    </root>
+  </artifact>
+</component>
