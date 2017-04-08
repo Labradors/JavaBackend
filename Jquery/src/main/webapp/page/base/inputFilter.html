@@ -1,4 +1,4 @@
-<!--属性过滤选择器-->
+<!--表单属性过滤选择器-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,11 +22,14 @@
   <script type="text/javascript">
     $(function () {
       $("#button1").click(function () {
-        $("div[class=bom] :nth-child(2)").css("background", "red");
+        $("select>option:selected").each(function (index,dom) {
+          alert($(dom).text());
+          var title = $(dom).attr("title");
+          console.log(title);
+        })
       });
       $("#button2").click(function () {
-        $("div[class=bom] :nth-child(1)").slideDown(3000).slideUp(3000);
-        $("div[class=bom] :first-child").slideDown(3000).slideUp(3000);
+        $("input:disabled").val("不可用的赋值");
       });
       $("#button3").click(function () {
         $("div[class=bom] :last-child").css("background","red");
@@ -39,8 +42,26 @@
 </head>
 <body>
 <h1>妈的智障</h1>
+<input type="text" disabled="disabled" id="input1" value="请输入啥啥啥"><br>
+<input type="text" value="请输入....">
+
+<input type="checkbox">
+<input type="radio">
+<select name="text" multiple="multiple">
+  <option>mdzz</option>
+  <option selected="selected">mdzz</option>
+  <option>mdzz</option>
+  <option>mdzz</option>
+  </select>
+<select name="text" multiple="multiple">
+  <option>mdzz</option>
+  <option>mdzz</option>
+  <option>mdzz</option>
+  <option selected="selected">mdzz</option>
+</select>
 <div>
-  <div id="bom1" class="bom"></div>
+  <div id="bom1" class="bom">
+  </div>
   <div id="bom2" class="bom">
     <div title="mdzz"></div>
     <div title="mdzz">
@@ -58,8 +79,8 @@
 
   </span>
 </div>
-<input type="button" value="选取class为bom的第二个子元素" id="button1">
-<input type="button" value="选取class为bom的div下的第一个子元素" id="button2">
+<input type="button" value="获取下拉框中选中的内容" id="button1">
+<input type="button" value="对页面内所有不可用的表单赋值" id="button2">
 <input type="button" value="选择class为bom的div下的最后一个子元素" id="button3">
 <input type="button" value="如果class为one的div下只有一个子元素，那么选中" id="button4">
 </body>
