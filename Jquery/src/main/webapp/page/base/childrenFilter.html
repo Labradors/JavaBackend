@@ -1,0 +1,82 @@
+<!--属性过滤选择器-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    div * {
+      width: 400px;
+      height: 400px;
+      float: left;
+      border: 1px salmon solid;
+    }
+    #bom2,#bom4 div{
+      width: 100px;
+      height: 100px;
+      background: rebeccapurple;
+    }
+  </style>
+  <script type="text/javascript" src="../../Jquery/js/jquery-1.4.2.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#button1").click(function () {
+        $("div[title]").css("background","blue");
+      });
+      $("#button2").click(function () {
+        $("div[title='mdzz']").slideUp(3000).slideDown(3000);
+      });
+      $("#button3").click(function () {
+        $("div[title!='mdzz']").css("height",800).css("background","red");
+      });
+      $("#button4").click(function () {
+        $("div[title^='m']").slideUp(3000).slideDown(3000);
+      });
+      $("#button5").click(function () {
+        $("div[title$='z']").css("background","yellow");
+      });
+      $("#button6").click(function () {
+        $("div[title*='mdz']").css("background","black");
+      });
+      $("#button7").click(function () {
+        $("div[id][title*=mdz]").animate({"margin-left":5000},10000);
+      });
+      $("#button8").click(function () {
+        $("div:lt(3)").animate({"margin-left":200},1000);
+      });
+      $("#button9").click(function () {
+        $(":header").animate({"margin-left":200},1000);
+      });
+      $("#button10").click(function () {
+        $(":animated").animate({"margin-left":200},1000);
+      });
+    })
+  </script>
+</head>
+<body>
+<h1>妈的智障</h1>
+<div>
+  <div id="bom1" class="bom"></div>
+  <div id="bom2" class="bom">
+    <div title="mdzz"></div>
+  </div>
+  <div id="bom3" class="bom"></div>
+  <div id="bom4" class="bom">
+    <div id="bom5" title="mdz"></div>
+  </div>
+  <span id="span" class="bom">
+
+  </span>
+</div>
+<input type="button" value="div中包含title属性" id="button1">
+<input type="button" value="div中title的值为mdzz" id="button2">
+<input type="button" value="div中title的值不为mdzz" id="button3">
+<input type="button" value="div中title以m开头" id="button4">
+<input type="button" value="div中title以z结尾" id="button5">
+<input type="button" value="div中title含有mdz" id="button6">
+<input type="button" value="div中title含有mdz并且包含id属性" id="button7">
+<input type="button" value="索引值为<3" id="button8">
+<input type="button" value="拿到所有的标题元素" id="button9">
+<input type="button" value="正在执行动画的元素" id="button10">
+</body>
+</html>
